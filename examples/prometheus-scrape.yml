@@ -1,0 +1,8 @@
+# Add this job to your existing Prometheus prometheus.yml, under scrape_configs:
+  - job_name: cr8808
+    scrape_interval: 60s
+    scrape_timeout: 45s        # a warm scrape takes ~4 s; the first one after start-up ~30 s
+    static_configs:
+      - targets: ['THE_EXPORTER_HOST:9878']   # host running the exporter
+        labels:
+          device: xiaomi-cr8808

@@ -1,0 +1,12 @@
+# secrets
+.env
+
+# discover output (raw router API responses)
+dump/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/

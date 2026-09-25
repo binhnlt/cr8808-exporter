@@ -1,0 +1,21 @@
+# Optional convenience wrapper to run just the exporter.
+# You bring your own Prometheus + Grafana (see examples/).
+services:
+  exporter:
+    build: ./exporter
+    # Or use a prebuilt image instead of build:
+    # image: ghcr.io/YOUR_USER/cr8808-exporter:latest
+    container_name: cr8808-exporter
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "9878:9878"
+
+  # Monitoring a second router: copy the block, give it its own env file and host port.
+  # exporter-upstairs:
+  #   build: ./exporter
+  #   container_name: cr8808-exporter-upstairs
+  #   restart: unless-stopped
+  #   env_file: upstairs.env        # MODEM_URL=..., MODEM_PASSWORD=..., MODEM_NAME=upstairs
+  #   ports:
+  #     - "9879:9878"
